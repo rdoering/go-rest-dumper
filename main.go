@@ -4,6 +4,7 @@ import (
   "net/http"
   "fmt"
   "net/http/httputil"
+  "bytes"
 )
 
 func main() {
@@ -13,17 +14,10 @@ func main() {
 
 func RequestHandler(w http.ResponseWriter, r *http.Request) {
   dump, _ := httputil.DumpRequest(r, true)
-  //w.Write([]byte("hello"))
   w.Write(dump)
   
-  fmt.Println("  ---[ Request from  ]---")
-  fmt.Println("${request.method} /${request.url} HTTP/${request.protocolVersion}");
-  fmt.Println("Host: ");
-  /*request.headers.forEach((key, value){
-    print("$key: $value");
-  });*/
-  /*if(request.contentLength != null) {
-    request.readAsString().then(print);
-  }*/
+  fmt.Printf("  ---[ Request from %s ]---\n", r.RemoteAddr)
+  n := bytes.IndexByte(dump, 0)
+  fmt.Print(string(dump[:n]))
 
 }
