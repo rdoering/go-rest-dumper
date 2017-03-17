@@ -4,7 +4,7 @@ import (
   "net/http"
   "fmt"
   "net/http/httputil"
-  "bytes"
+//  "bytes"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func RequestHandler(w http.ResponseWriter, r *http.Request) {
   w.Write(dump)
   
   fmt.Printf("  ---[ Request from %s ]---\n", r.RemoteAddr)
-  n := bytes.IndexByte(dump, 0)
-  fmt.Print(string(dump[:n]))
+ // n := bytes.IndexByte(dump, 0)
+  fmt.Println(string(dump[:]))
 
 }
