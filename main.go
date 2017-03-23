@@ -8,8 +8,11 @@ import (
 )
 
 func main() {
+  fmt.Println("Listen")
+
   http.HandleFunc("/", RequestHandler)
   http.ListenAndServe(":8080", nil)
+
 }
 
 func RequestHandler(w http.ResponseWriter, r *http.Request) {
