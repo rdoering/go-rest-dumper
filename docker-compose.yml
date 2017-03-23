@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  app:
+    image: golang:1.6.1-alpine
+    volumes:
+      - .:/go/src/go-with-compose
+    ports:
+     - "7080:8080"
+    working_dir: /go/src/go-with-compose
+    command: go run main.go
